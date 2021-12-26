@@ -11,10 +11,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import urllib
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
 navegador = webdriver.Chrome('C:/Users/winst/OneDrive/Documentos/CODE/PYTHON/chromedriver')
 navegador.get("https://web.whatsapp.com/")
@@ -31,6 +27,7 @@ for i, mensagem in enumerate(contatos_df['Mensagem']):
     navegador.get(link)
     while len(navegador.find_elements_by_id("side")) < 1:
         time.sleep(1)
-    navegador.find_element_by_xpath('//span [@data-testid="send"]').click()
+    Enviar_Mensagem = navegador.find_element_by_xpath("//span[@data-icon='send']")
+    Enviar_Mensagem.click()
     time.sleep(5)
 
